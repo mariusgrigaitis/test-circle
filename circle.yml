@@ -1,0 +1,5 @@
+machine:
+    services:
+        - docker
+    php:
+        version: 5.5.11
