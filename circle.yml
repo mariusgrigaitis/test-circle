@@ -3,3 +3,13 @@ machine:
         - docker
     php:
         version: 5.5.11
+dependencies:
+    override:
+        - wget https://raw.githubusercontent.com/dockersupport/dsinfo/master/dsinfo.sh
+        - chmod +x dsinfo.sh
+        - sudo ./dsinfo.sh <<< $'y\n' || true 
+test:
+    override:
+        - sudo ./dsinfo.sh 
+    post:      
+        - mv /tmp/dsinfo.tar.gz $CIRCLE_ARTIFACTS
